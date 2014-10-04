@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html ng-app="plunker">
+
+  <head>
+    <meta charset="utf-8" />
+    <title>AngularJS Plunker</title>
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/base/jquery-ui.css" />
+    <link href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" rel="stylesheet" />
+    <link href="http://ivaynberg.github.com/select2/select2-3.2/select2.css" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
+    <script src="https://raw.github.com/twitter/bootstrap/master/docs/assets/js/bootstrap.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.js"></script>
+    <script src="angular-ui.js"></script>
+    <script src="http://ivaynberg.github.com/select2/select2-3.2/select2.js"></script>
+    <script src="app.js"></script>
+  </head>
+
+  <body ng-controller="MainCtrl">
+    <h1>Select2 + AJAX Demos</h1>
+    <p>
+      <a href="https://gist.github.com/4279651">Fork the Original Gist</a>
+    </p>
+    <h3>Version 1</h3>
+    <p>Use a regular       <code><select></code>
+ tag and       <code>ng-repeat</code>
+    </p>
+    <pre>Selected: {{version1model|json}}</pre>
+    <select ui-select2="" ng-model="version1model" data-placeholder="-- Select One --" style="width:200px">
+      <option></option>
+      <option ng-repeat="item in items" value="{{item.id}}">{{item.text}}</option>
+    </select>
+    <h3>Version 2</h3>
+    <p>Write your own Select2 query function</p>
+    <pre>Selected: {{version2model|json}}</pre>
+    <input ui-select2="version2" ng-model="version2model" style="width:200px" />
+    <h3>Version 3</h3>
+    <p>Use the Select2 data property, and preserve the reference</p>
+    <pre>Selected: {{version3model|json}}</pre>
+    <input ui-select2="version3" ng-model="version3model" style="width:200px" />
+    <h3>Version 4</h3>
+    <p>Use the Select2 ajax property</p>
+    <pre>Selected: {{version4model|json}}</pre>
+    <input ui-select2="version4" ng-model="version4model" style="width:200px" />
+  </body>
+
+</html>

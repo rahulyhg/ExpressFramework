@@ -1,0 +1,77 @@
+ <div class="container">
+   <div class="col-xs-7">
+        <table  class="table table-bordered" >
+        <tr>
+            <th>Process name</th>
+            <th>Lead Name</th>
+            <th>Edit/Delete</th>
+        </tr>
+        <tr ng-repeat="singleview in leadview">
+            <td>{{singleview.pname.pname}}</td>
+            <td>{{singleview.leadName}}</td>
+            <td><a class="btn btn-danger btnspacing" ng-click="deltelead(singleview._id)" >Delete</a> <a class="btn btn-info" ng-click="showeditlead(singleview._id,singleview.process,singleview.lname)">Edit</a></td>{{singleview.process}}
+        </tr>
+        </table>
+    </div>
+<div ng-show =!flag>
+
+   <div class="col-xs-5">
+    <div class="row">
+        <div class="col-xs-3">
+            <label>Process Name</label>
+        </div>
+        <div class="col-xs-2">
+            <select class="selectpicker" ng-model="processselected"  ng-options="process.pname for process in processview"></select> 
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-xs-3">
+            <label>Lead Name </label>
+        </div>
+        <div class="col-xs-2">
+           <input type="text" ng-model="lname" />
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-4">
+            <button type="submit" class="btn btn-default creates" ng-click="createlead(processselected,lname)">Create Lead</button>
+        </div>
+    </div>
+</div>
+</div>
+
+
+
+
+<div ng-show =flag>
+
+  <div class="col-xs-5">
+    <div class="row">
+        <div class="col-xs-3">
+            <label>Process Name</label>
+        </div>
+        <div class="col-xs-2">
+            <select class="selectpicker" ng-model="processSelected" selcted="processSelected">
+            <option ng-repeat="process in processview" value="{{process._id}}">{{process.pname}}</option>
+            </select>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-xs-3">
+            <label>Lead Name </label>
+        </div>
+        <div class="col-xs-2">
+           <input type="text" ng-model="lname1" />
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-4">
+            <button type="submit" class="btn btn-default creates" ng-click="editlead(id1,processSelected,lname1)">Edit Lead</button>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+

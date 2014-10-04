@@ -1,0 +1,143 @@
+<div class="container">
+<div class="col-xs-7">
+    
+        <table  class="table table-bordered" >
+        <tr>
+            <th>Process name</th>
+            <th>Supervisior</th>
+            <th>Agents</th>
+            <th>Quality</th>
+            <th>Edit/Delete</th>
+        </tr>
+        <tr ng-repeat="singleview in processview">
+            <td>{{singleview.pname}}</td>
+            <td>{{singleview.supervisior.name}}</td>
+            <td><p ng-repeat="agent in singleview.agents">{{agent.name}}</p></td>
+            <td><p ng-repeat="singlequality in singleview.quality">{{singlequality.name}}</p></td>
+            <td><a class="btn btn-danger btnspacing" ng-click="deleteprocess(singleview._id)" >Delete</a> <a class="btn btn-info" ng-click="showeditprocess(singleview._id)">Edit</a></td>
+        </tr>
+        </table>
+    </div>
+    <div ng-show = !flag>
+   <div class="col-xs-5">
+    <div class="row">
+        <div class="col-xs-3">
+            <label>Process Name</label>
+        </div>
+        <div class="col-xs-2">
+            <input type="text" ng-model="pname" />
+
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-xs-3">
+            <label>Supervisior </label>
+        </div>
+        <div class="col-xs-2">
+            
+            <select class="selectpicker" ng-model="supervisiorselected"  ng-options="supervisior as supervisior.name for supervisior in acesslevel |filter:{acessLevel: 'Supervisior'}"></select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-3">
+            <label>Agents</label>
+        </div>
+<!--      <label ng-repeat = "agents in acesslevel |filter:{acesslevel: 'Agent'}">
+        <div class="col-xs-2">
+            <input type= "checkbox" ng-model="agents.isSelected" checklist-value="agents.name" ng-true-value="agents" ng-false-value="'NO'">{{agents.name}}
+        </div>
+        </label>   --> 
+        
+        
+<select ui-select2 ng-model="agentSelected" multiple >
+    <option ng-repeat="agents in acesslevel |filter:{acessLevel: 'Agent'}" value="{{agents._id}}">{{agents.name}}</option>
+</select>        
+        
+    </div>
+    <div class="row">
+        <div class="col-xs-3">
+            <label>Quality</label>
+        </div>
+        <select ui-select2 ng-model="qualitySelected" multiple >
+    <option ng-repeat="quality in acesslevel|filter:{acessLevel:'Quality'}" value="{{quality._id}}">{{quality.name}}</option>
+</select>
+    
+    <!--    <label ng-repeat = "quality in acesslevel |filter:{acesslevel: 'Quality'}">
+        <div class="col-xs-2">
+            <input type= "checkbox" checklist-model="qualitySelected" checklist-value="quality.name" name="qualitySelected">{{quality.name}}
+        </div>
+        </label>  -->
+    </div>
+     <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-4">
+            <button type="submit" class="btn btn-default creates" ng-click="createprocess(pname,supervisiorselected,agentSelected,qualitySelected)">Create Process</button>
+        </div>
+    </div>
+</div>
+</div>
+
+
+<div ng-show =flag>
+
+   <div class="col-xs-5">
+    <div class="row">
+        <div class="col-xs-3">
+            <label>Process Name</label>
+        </div>
+        <div class="col-xs-2">
+            <input type="text" ng-model="pname1" />
+
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-xs-3">
+            <label>Supervisior </label>
+        </div>
+        <div class="col-xs-2">
+            <select class="selectpicker" ng-model="supervisiorselected1">
+                <option ng-repeat="supervisor in acesslevel" value="{{supervisor._id}}">{{supervisor.name}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-3">
+            <label>Agents</label>
+        </div>
+<!--      <label ng-repeat = "agents in acesslevel |filter:{acesslevel: 'Agent'}">
+        <div class="col-xs-2">
+            <input type= "checkbox" ng-model="agents.isSelected" checklist-value="agents.name" ng-true-value="agents" ng-false-value="'NO'">{{agents.name}}
+        </div>
+        </label>   --> 
+        
+        
+<select ui-select2 ng-model="agentSelected1" multiple >
+    <option ng-repeat="agents in acesslevel |filter:{acessLevel: 'Agent'}" value="{{agents._id}}">{{agents.name}}</option>
+</select>        
+        
+    </div>
+    <div class="row">
+        <div class="col-xs-3">
+            <label>Quality</label>
+        </div>
+        <select ui-select2 ng-model="qualitySelected1" multiple >
+    <option ng-repeat="quality in acesslevel|filter:{acessLevel:'Quality'}" value="{{quality._id}}">{{quality.name}}</option>
+</select>
+    
+    <!--    <label ng-repeat = "quality in acesslevel |filter:{acesslevel: 'Quality'}">
+        <div class="col-xs-2">
+            <input type= "checkbox" checklist-model="qualitySelected" checklist-value="quality.name" name="qualitySelected">{{quality.name}}
+        </div>
+        </label>  -->
+    </div>
+     <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-4">
+            <button type="submit" class="btn btn-default creates" ng-click="editprocess(id1,pname1,supervisiorselected1,agentSelected1,qualitySelected1)">Edit Process</button>
+        </div>
+    </div>
+</div>
+</div>
+
+
+

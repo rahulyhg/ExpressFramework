@@ -1,0 +1,142 @@
+<div class="container">
+    <div class="col-xs-7">
+    
+        <table  class="table table-bordered" >
+        <tr>
+            <th>Name</th>
+            <th>Username</th>
+            <th>AcessLevel</th>
+            <th>Birth Date</th>
+            <th>Edit/Delete</th>
+        </tr>
+        <tr ng-repeat="singleview in view">
+           
+            <td>{{singleview.name}}</td>
+            <td>{{singleview.userName}}</td>
+            <td>{{singleview.acessLevel}}</td>
+            <td>{{singleview.birthDate}}</td>
+            <td><a class="btn btn-danger btnspacing" ng-click="deleteuser(singleview._id)" >Delete</a> <a class="btn btn-info" ng-click="showedituser(singleview._id,singleview.name,singleview.userName,singleview.password,singleview.acessLevel,singleview.birtDate)">Edit</a></td>
+        </tr>
+        </table>
+    </div>   
+<div ng-show = !flag>
+    <div class="col-xs-5">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <label>Name</label>
+                        </div>
+                        <div class="col-xs-2">
+                            <input type="text" ng-model="name" />
+                            
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <label>Username</label>
+                        </div>
+                        <div class="col-xs-2">
+                            <input type="text" ng-model="username" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <label>Password</label>
+                        </div>
+                        <div class="col-xs-2">
+                            <input type="password" ng-model="password" required/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <label>Access Level</label>
+                        </div>
+                        <div class="col-xs-2">
+                            <select class="selectpicker" ng-model="acesslevel">
+                                <option>Admin</option>
+                                <option>Supervisior</option>
+                                <option>Agent</option>
+                                <option>Quality</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <label>DOB :</label>
+                        </div>
+                        <div class="col-xs-2">
+                            <input type="date" ng-model="dob" class="datess" />
+                        </div>
+                    </div>
+                     <div class="form-group">
+                         <div class="col-sm-offset-2 col-sm-4">
+                             <button type="submit" class="btn btn-default creates" ng-click="createUser(name,username,password,acesslevel,dob)">Create User</button>
+                          </div>
+                     </div>
+                    </div>
+                </div>
+                
+         
+            <div ng-show =flag>
+            <div class ="form-group">
+              <div class="col-xs-5">
+        
+            <div>
+                   <div ng-model="id1"></div>
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <label>Name</label>
+                        </div>
+                        <div class="col-xs-3">
+                            <input type="text" ng-model="name1" />
+                            
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <label>Username</label>
+                        </div>
+                        <div class="col-xs-2">
+                            <input type="text" ng-model="username1" />
+                        </div>
+                    </div>
+                     <div class="row">
+                        <div class="col-xs-3">
+                            <label>Access Level</label>
+                        </div>
+                        <div class="col-xs-2">
+                            <select class="selectpicker" ng-model="acesslevel1" >
+                                <option>Admin</option>
+                                <option>Supervisior</option>
+                                <option>Agent</option>
+                                <option>Quality</option>
+                            </select>
+                        </div>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <label>DOB :</label>
+                        </div>
+                        <div class="col-xs-2">
+                            <input type="date" ng-model="dob1" class="datess" />
+                        </div>
+                    </div>
+                     <div class="form-group">
+                         <div class="col-sm-offset-2 col-sm-4">
+                             <button type="submit" class="btn btn-default creates" ng-click="edituser(id1,name1,username1,password1,acesslevel1,dob1)">Edit User</button>
+                          </div>
+                     </div>
+                    </div>
+                </div>
+       
+
+
+
+
+
+
+
+
+
+
